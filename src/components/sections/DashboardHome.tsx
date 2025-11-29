@@ -42,19 +42,19 @@ const DashboardHome: React.FC<DashboardHomeProps> = ({ profile, results }) => {
   return (
     <div className="space-y-6">
       {/* Welcome Section */}
-      <div className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 rounded-2xl p-8 text-white">
+      <div className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 rounded-3xl p-8 text-white shadow-2xl">
         <div className="flex items-center justify-between">
           <div>
             <h1 className="text-3xl font-bold mb-2">
               Welcome back, {profile.fullName?.split(' ')[0] || 'Friend'}! ✨
             </h1>
-            <p className="text-indigo-100 text-lg">
+            <p className="text-indigo-100 text-lg leading-relaxed">
               Your numerology journey continues. Here's what the numbers reveal today.
             </p>
           </div>
           <div className="hidden md:block">
-            <div className="bg-white/20 p-4 rounded-xl">
-              <Star className="h-12 w-12 text-yellow-300" />
+            <div className="bg-white/20 p-6 rounded-2xl backdrop-blur-sm">
+              <Star className="h-16 w-16 text-yellow-300 animate-pulse" />
             </div>
           </div>
         </div>
@@ -62,64 +62,72 @@ const DashboardHome: React.FC<DashboardHomeProps> = ({ profile, results }) => {
 
       {/* Quick Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+        <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:scale-105">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm text-gray-600">Life Path</p>
-              <p className="text-2xl font-bold text-indigo-600">{results.lifePath.value}</p>
+              <p className="text-3xl font-bold text-indigo-600">{results.lifePath.value}</p>
             </div>
-            <TrendingUp className="h-8 w-8 text-indigo-500" />
+            <div className="bg-indigo-100 p-3 rounded-xl">
+              <TrendingUp className="h-8 w-8 text-indigo-600" />
+            </div>
           </div>
         </div>
         
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+        <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:scale-105">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm text-gray-600">Personal Year</p>
-              <p className="text-2xl font-bold text-purple-600">{results.personalYear}</p>
+              <p className="text-3xl font-bold text-purple-600">{results.personalYear}</p>
             </div>
-            <Calendar className="h-8 w-8 text-purple-500" />
+            <div className="bg-purple-100 p-3 rounded-xl">
+              <Calendar className="h-8 w-8 text-purple-600" />
+            </div>
           </div>
         </div>
         
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+        <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:scale-105">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm text-gray-600">Personal Month</p>
-              <p className="text-2xl font-bold text-pink-600">{results.personalMonth}</p>
+              <p className="text-3xl font-bold text-pink-600">{results.personalMonth}</p>
             </div>
-            <Calendar className="h-8 w-8 text-pink-500" />
+            <div className="bg-pink-100 p-3 rounded-xl">
+              <Calendar className="h-8 w-8 text-pink-600" />
+            </div>
           </div>
         </div>
         
-        <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+        <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:scale-105">
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm text-gray-600">Personal Day</p>
-              <p className="text-2xl font-bold text-orange-600">{results.personalDay}</p>
+              <p className="text-3xl font-bold text-orange-600">{results.personalDay}</p>
             </div>
-            <Calendar className="h-8 w-8 text-orange-500" />
+            <div className="bg-orange-100 p-3 rounded-xl">
+              <Calendar className="h-8 w-8 text-orange-600" />
+            </div>
           </div>
         </div>
       </div>
 
       {/* Daily Horoscope */}
-      <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+      <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
         <div className="flex items-center space-x-3 mb-4">
-          <div className="bg-yellow-100 p-2 rounded-lg">
+          <div className="bg-gradient-to-r from-yellow-100 to-orange-100 p-3 rounded-xl">
             <Star className="h-5 w-5 text-yellow-600" />
           </div>
           <h3 className="text-lg font-semibold text-gray-900">
             Daily Guidance - {zodiacSign}
           </h3>
         </div>
-        <p className="text-gray-700 leading-relaxed">{dailyHoroscope}</p>
+        <p className="text-gray-700 leading-relaxed text-lg">{dailyHoroscope}</p>
       </div>
 
       {/* Core Numbers Summary */}
-      <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+      <div className="bg-white rounded-2xl p-8 shadow-lg border border-gray-100">
         <h3 className="text-lg font-semibold text-gray-900 mb-6">Your Core Numbers</h3>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <NumberCard
             label="Life Path"
             value={results.lifePath.value}
@@ -155,16 +163,16 @@ const DashboardHome: React.FC<DashboardHomeProps> = ({ profile, results }) => {
 
       {/* Karmic Debt Alert */}
       {results.karmicDebt && results.karmicDebt.length > 0 && (
-        <div className="bg-gradient-to-r from-orange-50 to-red-50 border border-orange-200 rounded-2xl p-6">
+        <div className="bg-gradient-to-r from-orange-50 to-red-50 border-2 border-orange-200 rounded-2xl p-8 shadow-lg">
           <div className="flex items-center space-x-3 mb-4">
-            <div className="bg-orange-100 p-2 rounded-lg">
+            <div className="bg-orange-100 p-3 rounded-xl">
               <Heart className="h-5 w-5 text-orange-600" />
             </div>
             <h3 className="text-lg font-semibold text-orange-900">Karmic Debt Numbers Detected</h3>
           </div>
           <div className="space-y-2">
             {results.karmicDebt.map((debt: any, idx: number) => (
-              <p key={idx} className="text-orange-800">
+              <p key={idx} className="text-orange-800 font-medium">
                 <strong>{debt.number}</strong> in your {debt.type} - Focus on spiritual growth and service
               </p>
             ))}

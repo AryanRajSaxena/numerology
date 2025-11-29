@@ -85,12 +85,12 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onSuccess }) => 
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md">
+      <DialogContent className="sm:max-w-md bg-white rounded-2xl shadow-2xl border-0">
         <DialogHeader>
-          <DialogTitle className="text-center text-xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+          <DialogTitle className="text-center text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
             {isLogin ? 'Welcome Back' : 'Create Account'}
           </DialogTitle>
-          <DialogDescription className="text-center text-gray-600">
+          <DialogDescription className="text-center text-gray-600 text-lg">
             {isLogin 
               ? 'Sign in to access your full numerology report'
               : 'Join thousands discovering their numerology insights'
@@ -104,7 +104,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onSuccess }) => 
             onClick={handleGoogleSignIn}
             disabled={loading}
             variant="outline"
-            className="w-full h-11 border-gray-300 hover:bg-gray-50"
+            className="w-full h-12 border-gray-300 hover:bg-gray-50 rounded-xl font-medium transition-all duration-200 hover:shadow-md"
           >
             <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24">
               <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -137,7 +137,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onSuccess }) => 
                     placeholder="Enter your full name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="pl-10"
+                    className="pl-10 h-12 rounded-xl border-gray-300 focus:border-indigo-500 focus:ring-indigo-500"
                     required
                   />
                 </div>
@@ -154,7 +154,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onSuccess }) => 
                   placeholder="Enter your email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="pl-10"
+                  className="pl-10 h-12 rounded-xl border-gray-300 focus:border-indigo-500 focus:ring-indigo-500"
                   required
                 />
               </div>
@@ -170,7 +170,7 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onSuccess }) => 
                   placeholder="Enter your password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="pl-10"
+                  className="pl-10 h-12 rounded-xl border-gray-300 focus:border-indigo-500 focus:ring-indigo-500"
                   required
                   minLength={6}
                 />
@@ -187,16 +187,23 @@ const AuthModal: React.FC<AuthModalProps> = ({ isOpen, onClose, onSuccess }) => 
             <Button
               type="submit"
               disabled={loading}
-              className="w-full h-11 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700"
+              className="w-full h-12 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-700 hover:to-purple-700 rounded-xl font-semibold transition-all duration-200 shadow-lg hover:shadow-xl"
             >
-              {loading ? 'Please wait...' : (isLogin ? 'Sign In' : 'Create Account')}
+              {loading ? (
+                <div className="flex items-center space-x-2">
+                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                  <span>Please wait...</span>
+                </div>
+              ) : (
+                isLogin ? 'Sign In' : 'Create Account'
+              )}
             </Button>
           </form>
 
           <div className="text-center">
             <button
               onClick={toggleMode}
-              className="text-sm text-indigo-600 hover:text-indigo-700 font-medium"
+              className="text-sm text-indigo-600 hover:text-indigo-700 font-medium transition-colors"
             >
               {isLogin 
                 ? "Don't have an account? Sign up" 
