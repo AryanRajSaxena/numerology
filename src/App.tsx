@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { supabase } from './lib/supabase'; // Corrected import
+import { supabase, isSupabaseConfigured } from './lib/supabase';
 import Dashboard from './components/Dashboard';
 import DashboardHome from './components/sections/DashboardHome';
 import FullResultsCard from './components/FullResultsCard';
@@ -59,6 +59,12 @@ export default function App(): JSX.Element {
 
     const init = async () => {
       try {
+        if (!isSupabaseConfigured) {
+          console.warn('Supabase not configured, running in offline mode');
+          setIsLoading(false);
+          return;
+        }
+        
         const { data: { session } } = await supabase.auth.getSession();
         setUser(session?.user ?? null);
 
