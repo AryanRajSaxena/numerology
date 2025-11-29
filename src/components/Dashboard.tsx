@@ -1,17 +1,5 @@
 import React, { useState, ReactNode } from 'react';
-import { 
-  Home, 
-  Brain, 
-  Grid3X3, 
-  Edit3, 
-  FileText, 
-  User,
-  Calendar,
-  Heart,
-  Settings,
-  Menu,
-  X
-} from 'lucide-react';
+import { Home, Brain, Grid3x3 as Grid3X3, CreditCard as Edit3, FileText, User, Calendar, Heart, Settings, Menu, X } from 'lucide-react';
 
 interface DashboardProps {
   user: any;
